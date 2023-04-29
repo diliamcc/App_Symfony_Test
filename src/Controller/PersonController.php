@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
 
 
 class PersonController extends AbstractController
@@ -22,7 +22,7 @@ class PersonController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_person_new', methods: ['GET', 'POST'])]
+    #[Route('/person/new', name: 'app_person_new', methods: ['GET', 'POST'])]
     public function new(Request $request, PersonRepository $personRepository): Response
     {
         $person = new Person();
@@ -40,7 +40,7 @@ class PersonController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_person_show', methods: ['GET'])]
+    #[Route('person/{id}', name: 'app_person_show', methods: ['GET'])]
     public function show(Person $person): Response
     {
         return $this->render('person/show.html.twig', [
@@ -48,7 +48,7 @@ class PersonController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_person_edit', methods: ['GET', 'POST'])]
+    #[Route('/person/{id}/edit', name: 'app_person_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Person $person, PersonRepository $personRepository): Response
     {
         $form = $this->createForm(PersonType::class, $person);

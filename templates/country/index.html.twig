@@ -1,16 +1,20 @@
-{% extends 'base.html.twig' %}
+{% extends 'flat.html.twig' %}
 
-{% block title %}Country index{% endblock %}
+{% block title %}Countries List{% endblock %}
 
 {% block body %}
-    <h1>Country index</h1>
+    <div class="row">
+        <div class="col-md-12">
+    <h1>Countries List</h1>
+    <a class="btn btn-primary btn-sm pull-right" href="{{ path('app_country_new') }}" role="button">add new »</a>
+    
+
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
-                <th>actions</th>
+                <th>&nbsp;</th>
             </tr>
         </thead>
         <tbody>

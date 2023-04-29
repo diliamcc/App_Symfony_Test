@@ -9,11 +9,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-#[Route('/country')]
+
 class CountryController extends AbstractController
 {
-    #[Route('/', name: 'app_country_index', methods: ['GET'])]
+    #[Route('/country', name: 'app_country_index', methods: ['GET'])]
     public function index(CountryRepository $countryRepository): Response
     {
         return $this->render('country/index.html.twig', [
@@ -39,7 +40,7 @@ class CountryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_country_show', methods: ['GET'])]
+    #[Route('/{id}/show', name: 'app_country_show', methods: ['GET'])]
     public function show(Country $country): Response
     {
         return $this->render('country/show.html.twig', [
@@ -64,7 +65,7 @@ class CountryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_country_delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'app_country_delete', methods: ['POST'])]
     public function delete(Request $request, Country $country, CountryRepository $countryRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$country->getId(), $request->request->get('_token'))) {
